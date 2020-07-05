@@ -86,7 +86,7 @@ const Pesquisa = () => {
                 </button>
             </div>}
         {sucess && 
-            <div className='w-1/5 sm:w-1/5 mx-auto'>
+            <div className='lg:w-1/5 sm:w-full mx-auto'>
                 <p className='mb-6 text-center bg-blue-100 border-t border-b border-blue-500 text-blue-700 px-4 py-3" role="alert"'>Obrigado pela sugestão ou crítica</p>
                 {
                    retorno.showCoupom && <div className='text-center border p-4 mb-4'>
