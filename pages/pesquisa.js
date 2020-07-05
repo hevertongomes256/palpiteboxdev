@@ -61,20 +61,13 @@ const Pesquisa = () => {
                 O restaurante X sempre busca por atender melhor seus clientes.<br/> Por isso, estamos sempre abe
             </p>
 
-            {!checkvalidate && 
-                <div>
-                    ATENÇAO!! <br/>
-                    Preencha todos os campos corretamente!
-                </div>
-            }
-
-            {!sucess && <div className='w-1/5 mx-auto'>
+            {!sucess && <div className='lg:w-1/5 sm:w-1/6 mx-auto'>
                 <label className='font-bold'>Nome:</label>
-                <input className='p-4 block shadow bg-blue-100 my-2 rounded' required placeholder='Nome' onChange={onChage} name='Nome' value={form.Nome}/>
+                <input className='p-4 block shadow bg-blue-100 my-2 mx-auto rounded' required placeholder='Nome' onChange={onChage} name='Nome' value={form.Nome}/>
                 <label className='font-bold'>Email:</label>
-                <input className='p-4 block shadow bg-blue-100 my-2 rounded' required type="email" placeholder='Email'  onChange={onChage} name='Email' value={form.Email}/>
+                <input className='p-4 block shadow bg-blue-100 my-2 mx-auto rounded' required type="email" placeholder='Email'  onChange={onChage} name='Email' value={form.Email}/>
                 <label className='font-bold'>Whatsapp:</label>
-                <input className='p-4 block shadow bg-blue-100 my-2 rounded' required placeholder='Whatsapp'  onChange={onChage} name='Whatsapp' value={form.Whatsapp}/>
+                <input className='p-4 block shadow bg-blue-100 my-2 mx-auto rounded' required placeholder='Whatsapp'  onChange={onChage} name='Whatsapp' value={form.Whatsapp}/>
                 <label className='font-bold'>Dê um nota:</label>
                 <div className='flex py-6'>
                     { notas.map(nota => {
@@ -87,13 +80,13 @@ const Pesquisa = () => {
                 }
                 </div>
                 <label className='font-bold'> Deixe uma sugestão ou crítica</label>
-                <input className='p-8 block shadow bg-blue-100 my-2 rounded ' required placeholder='Obs!'  onChange={onChage} name='Observacao' value={form.Observacao}/>
+                <input className='p-8 block shadow bg-blue-100 my-2 mx-auto rounded ' required placeholder='Obs!'  onChange={onChage} name='Observacao' value={form.Observacao}/>
                 <button className = 'bg-green-400 px-4 py-2 font-bold rounded-lg shadow-lg hover:shadow'
                  onClick={save}>Salvar 
                 </button>
             </div>}
         {sucess && 
-            <div className='w-1/5 mx-auto'>
+            <div className='w-1/5 sm:w-1/5 mx-auto'>
                 <p className='mb-6 text-center bg-blue-100 border-t border-b border-blue-500 text-blue-700 px-4 py-3" role="alert"'>Obrigado pela sugestão ou crítica</p>
                 {
                    retorno.showCoupom && <div className='text-center border p-4 mb-4'>
