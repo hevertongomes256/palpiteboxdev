@@ -7,25 +7,40 @@ const Pesquisa = () => {
         Nome: '',
         Email: '',
         Whatsapp: '',
-        Nota: 0
+        Nota: 0,
+        Observacao: ''
     })
 
     const [sucess, setSucess] = useState(false)
     const [retorno, setRetorno] = useState({})
 
     const notas = [0, 1, 2, 3, 4, 5]
+
+    const checkvalidate = () => {
+
+        if(form.Nome.length < 1 || form.Email.length < 1 || form.Whatsapp.length < 1 || form.Nota.checked){
+            return false
+        }
+
+        return true
+    }
+
     const save = async() => {
         
-        try{
-            const response = await fetch('api/save', {
-                method: 'POST',
-                body: JSON.stringify(form)
-            })
-            const data = await response.json()
-            setSucess(true)
-            setRetorno(data)
-        }catch(err){
+        if(checkvalidate()){
+            try{
+                const response = await fetch('api/save', {
+                    method: 'POST',
+                    body: JSON.stringify(form)
+                })
+                const data = await response.json()
+                setSucess(true)
+                setRetorno(data)
+            }catch(err){
 
+            }
+        }else{
+            alert('Preencha os campos')
         }
     }
 
@@ -45,13 +60,21 @@ const Pesquisa = () => {
             <p className='text-center mb-6'>
                 O restaurante X sempre busca por atender melhor seus clientes.<br/> Por isso, estamos sempre abe
             </p>
+
+            {!checkvalidate && 
+                <div>
+                    ATENÇAO!! <br/>
+                    Preencha todos os campos corretamente!
+                </div>
+            }
+
             {!sucess && <div className='w-1/5 mx-auto'>
                 <label className='font-bold'>Nome:</label>
-                <input className='p-4 block shadow bg-blue-100 my-2 rounded' placeholder='Nome' onChange={onChage} name='Nome' value={form.Nome}/>
+                <input className='p-4 block shadow bg-blue-100 my-2 rounded' required placeholder='Nome' onChange={onChage} name='Nome' value={form.Nome}/>
                 <label className='font-bold'>Email:</label>
-                <input className='p-4 block shadow bg-blue-100 my-2 rounded' type="email" placeholder='Email'  onChange={onChage} name='Email' value={form.Email}/>
+                <input className='p-4 block shadow bg-blue-100 my-2 rounded' required type="email" placeholder='Email'  onChange={onChage} name='Email' value={form.Email}/>
                 <label className='font-bold'>Whatsapp:</label>
-                <input className='p-4 block shadow bg-blue-100 my-2 rounded' placeholder='Whatsapp'  onChange={onChage} name='Whatsapp' value={form.Whatsapp}/>
+                <input className='p-4 block shadow bg-blue-100 my-2 rounded' required placeholder='Whatsapp'  onChange={onChage} name='Whatsapp' value={form.Whatsapp}/>
                 <label className='font-bold'>Dê um nota:</label>
                 <div className='flex py-6'>
                     { notas.map(nota => {
@@ -63,6 +86,8 @@ const Pesquisa = () => {
                     })
                 }
                 </div>
+                <label className='font-bold'> Deixe uma sugestão ou crítica</label>
+                <input className='p-8 block shadow bg-blue-100 my-2 rounded ' required placeholder='Obs!'  onChange={onChage} name='Observacao' value={form.Observacao}/>
                 <button className = 'bg-green-400 px-4 py-2 font-bold rounded-lg shadow-lg hover:shadow'
                  onClick={save}>Salvar 
                 </button>

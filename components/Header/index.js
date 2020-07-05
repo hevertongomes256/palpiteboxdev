@@ -13,7 +13,7 @@ const Header = () => {
                     </Link>
                 </div>
             </div>
-            <div className='bg-gray-400 p-4 shadow-md text-center text-base'>
+            <div className='bg-blue-400 p-4 shadow-md text-center text-base'>
                 <Link href='/sobre'>
                     <a className='px-2 hover:underline'>Sobre</a>
                 </Link>
